@@ -174,7 +174,7 @@ ul {
   #menuIcon {
     display: none;
   }
-  /* We open the drawer. */
+  /* Open the drawer. */
   nav {
     position:relative;
     -webkit-transform: translate(0, 0);    
@@ -182,16 +182,3 @@ ul {
   }
 
 }
-        /* Flex-grow streches the main content to fill all available space. */
-
-    /*================ screen size larger than 650 px======================*/
-  
-      /* If there is space (> 800px), we keep the drawer open by default. */
-      @media screen and (min-width: 600px) {
-        main > #menu:after {
-          content: 'The drawer stays open if width > 600px';
-        }
-        main p, nav p {
-          text-decoration: line-through;
-        }
-      }
