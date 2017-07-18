@@ -1,187 +1,163 @@
 body {
-	margin: 0;
+    margin: 0;
 }
-
-html, body {
-  height: 100%;
-  width: 100%;
-  background-color: #dbd9c5;
+html,
+body {
+    height: 100%;
+    width: 100%;
+    background-color: #dbd9c5;
 }
-
 #header {
-  display: flex;
-  height: 60px;
+    display: flex;
+    height: 60px;
 }
-
 #icon {
-  height: 55px;
-   background: linear-gradient(to bottom, #eda47d 0%, #bf8040 100%);
+    height: 55px;
+    background: linear-gradient(to bottom, #eda47d 0%, #bf8040 100%);
 }
-
 #menuIcon {
-  padding-top: 10px;
-  padding-left: 5px;
+    padding-top: 10px;
+    padding-left: 5px;
 }
 main {
-  width: 100%;
-  height: 60%;
+    width: 100%;
+    height: 60%;
 }
-
 #headerIcon {
-  width: 30%;
+    width: 30%;
 }
-
 #title {
-	color: #4e0463;
-	font-size: 2.3em;
-	height: 70px;
-  padding-bottom: 20px;
-  font-weight: bold;
-  font-family: 'Amita', cursive;
+    color: #4e0463;
+    font-size: 2.3em;
+    height: 70px;
+    padding-bottom: 20px;
+    font-weight: bold;
+    font-family: 'Amita', cursive;
 }
-
-input {
-	width: 180px; 
-	height: 30px;
-}
-
 .fa {
-	color: purple;
+   color: yellow;
 }
-
+input {
+    width: 180px;
+    height: 30px;
+}
 #filterList {
-  letter-spacing: 3px;
-  color: #960a4b;
-  font-size: 28px; 
-  font-weight: bold;
-  padding-left: 6px;
+    letter-spacing: 3px;
+    color: #960a4b;
+    font-size: 28px;
+    font-weight: bold;
+    padding-left: 6px;
 }
-
 #searchBar {
-  padding-left: 6px;
+    padding-left: 6px;
 }
-
 #map {
-	position: absolute;
-	width: 70%;
-	height: 100%;
-  left: 30%;
+    position: absolute;
+    width: 70%;
+    height: 100%;
+    left: 30%;
 }
-
 .list {
-	width: 20%; 
-	margin-right:0px;
-	margin-left: 1%;
-	border: 1px solid black;
+    width: 20%;
+    margin-right: 0px;
+    margin-left: 1%;
+    border: 1px solid black;
 }
-
 #error {
-  font-size: 30px;
-  text-align: center;
-  color: #9e2304;
+    font-size: 30px;
+    text-align: center;
+    color: #9e2304;
 }
-      
-.infoWin { 
-  width: 200px; 
-  height: 120px; 
-} 
+.infoWin {
+    width: 200px;
+    height: 120px;
+}
+/*Off-canvas layout styles.*/
 
-
-/*Off-canvas layout styles.*/   
 nav {
     width: 220px;
-    height: 23%;         
+    height: 23%;
     position: absolute;
     /* This trasform moves the drawer off canvas. */
+    
     -webkit-transform: translate(-235px, 0);
     transform: translate(-235px, 0);
     /* Optionally, we animate the drawer. */
+    
     transition: transform 0.3s ease;
     z-index: 1;
     color: #680531;
     font-family: 'Kurale', serif;
 }
-
-nav.open {   		
-	-webkit-transform: translate(0, 0);
-	transform: translate(0, 0);
-}
-
-ul {
-  color: #680531;
-  font-size: 18px; 
-  line-height: 27px;
-  list-style: none;
-  padding-left: 0.5em;
-  padding-top: 1em;
-}
-
-  li:nth-child(odd) {
-    background-color: #dff4be;
-  }
-  li:nth-child(even) {
-    background-color: #cae5a2;
-  }
-
-/*Screen size smaller than 760px*/
-@media screen and (max-width: 760px) {
-  #title {
-    display: none;
-  }
-
-  #headerIcon {
-    padding-left: 85%;
-  }
-
-  #header {
-    height: 55px;
-  }
-
-  li:nth-child(odd) {
-    background-color: inherit;
-  }
-  li:nth-child(even) {
-    background-color: inherit;
-  }
-
-  nav.open {
-    height: 340px;
-    width: 258px;
-    font-size: 15px;
-    background-color: rgba(217, 157, 78, 0.65);
-  }
-
-  #filterList {
-    padding-left: 6px;
-    padding-bottom: 5px;
-  }
-
-  ul {
-    padding-top: 0;
-  }
-
-  #map {
-    width: 100%;
-    left: 0;
-  }
-
-  #title {
-    text-align: center;
-    font-size: 2em;
-  }
-
-}
-	    
-/* If screen size in greater than 760px, we keep the drawer open all the time. */
-@media screen and (min-width: 762px) {
-  #menuIcon {
-    display: none;
-  }
-  /* Open the drawer. */
-  nav {
-    position:relative;
-    -webkit-transform: translate(0, 0);    
+nav.open {
+    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
-  }
+}
+ul {
+    color: #680531;
+    font-size: 18px;
+    line-height: 27px;
+    list-style: none;
+    padding-left: 0.5em;
+    padding-top: 1em;
+}
+li:nth-child(odd) {
+    background-color: #dff4be;
+}
+li:nth-child(even) {
+    background-color: #cae5a2;
+}
+/*Screen size smaller than 760px*/
 
+@media screen and (max-width: 760px) {
+    #title {
+        display: none;
+    }
+    #headerIcon {
+        padding-left: 85%;
+    }
+    #header {
+        height: 55px;
+    }
+    li:nth-child(odd) {
+        background-color: inherit;
+    }
+    li:nth-child(even) {
+        background-color: inherit;
+    }
+    nav.open {
+        height: 340px;
+        width: 258px;
+        font-size: 15px;
+        background-color: rgba(217, 157, 78, 0.65);
+    }
+    #filterList {
+        padding-left: 6px;
+        padding-bottom: 5px;
+    }
+    ul {
+        padding-top: 0;
+    }
+    #map {
+        width: 100%;
+        left: 0;
+    }
+    #title {
+        text-align: center;
+        font-size: 2em;
+    }
+}
+/* If screen size in greater than 760px, we keep the drawer open all the time. */
+
+@media screen and (min-width: 762px) {
+    #menuIcon {
+        display: none;
+    }
+    /* We open the drawer. */
+    
+    nav {
+        position: relative;
+        -webkit-transform: translate(0, 0);
+        transform: translate(0, 0);
+    }
 }
