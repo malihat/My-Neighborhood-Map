@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Neighborhood Project</title>
+	<meta name="viewport" content="width=device-width,initial-scale=1">
+	<meta charset="utf-8">
+	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<script src="js/knockout-3.4.2.js"></script>	
+	<script async src="https://code.jquery.com/jquery-3.2.1.min.js" integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4=" crossorigin="anonymous">	 </script> 
+	<script src="https://use.fontawesome.com/898381a172.js"></script>
+	<link href="https://fonts.googleapis.com/css?family=Amita:400,700|Kurale" rel="stylesheet">
+
+</head>
+
+<body>
+
+<main>
+	<div id="header">
+		<div id="headerIcon"> <h1> <span class="fa fa-graduation-cap"> </span> </h1> </div>
+		<div id="headerTitle"> <div id="title"> Colleges in New York </div>	</div>
+	</div>
+	
+	<!-- Hamburger icon and calls toggleDisappear function when clicked -->
+	<div id="icon">
+		<img id="menuIcon" src="images/menu.png" data-bind="click: toggleDisappear">
+
+	</div>
+
+	<br>	
+
+	<!-- Map and error message display -->
+	<div id="mainMap">
+		<div id="map">	</div>
+		<div id="error"></div>
+
+	<!-- List of Colleges -->
+		<nav class="drawer" data-bind="css: {open: disappear}">
+		<div id='filterList'> Filter List </div>
+		<div id="searchBar">
+			<!-- Takes the value in search bar and filters from the list-->
+			<input type="search" data-bind="value: filter, valueUpdate: 'afterkeydown'" placeholder="Search"></input> 
+		</div>	
+		<!-- Filters from the list and opens the infowindow when clicked -->
+		<ul data-bind="foreach: filteredItems">
+			<li data-bind="text: title, click: $parent.clicker"> </li>  
+		</ul>
+		</nav>
+
+	</div>
+
+	
+</main>	
+
+	 <script src="js/neighbor.js"></script>
+	 <!-- Calls Google maps and error message function -->
+	 		<script async
+	        src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyCxbj0A9Cc8qpnNq06h97Yuhlnp5jsl9LE&v=3&callback=initMap" onerror="maptimeout()">
+	    </script>
+
+</body>
+</html>
