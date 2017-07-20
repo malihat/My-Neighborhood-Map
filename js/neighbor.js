@@ -196,7 +196,7 @@ function initMap() {
         //Create infowindow
         infoWindows = new google.maps.InfoWindow();
 
-        clicked();
+        clicked(marker);
 
         responsive();
 
@@ -206,10 +206,6 @@ function initMap() {
     //Creates infowindow and shows some information about that place from wikipedia when marker is clicked
     function populateInfoWindow(marker, infowindow) {
         if (infowindow.marker != marker) {
-            //Displays error message if wikipedia doesn't work
-            var wikiTimeOut = setTimeout(function() {
-                infowindow.setContent('<div>' + '<strong>' + 'Wikipedia loading error' + '<strong>' + 'Error has occured' + '</div>');
-            }, 5000);
 
             //AJAX request to Wikipedia 
             var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&prop=image&iiprop=url&format=json&callback=wikiCallback';
@@ -223,15 +219,19 @@ function initMap() {
                     clearTimeout(wikiTimeOut);
                 }
             });
+            //Displays error message if wikipedia doesn't work
+            var wikiTimeOut = setTimeout(function() {
+                alert("Wikipedia Loading Error");
+            }, 3000);
         }
         toggleBounce(marker);
     }
     map.fitBounds(bound);
 
     //Opens infowindow when marker clicked
-    function clicked() {
+    function clicked(marker) {
         marker.addListener('click', function() {
-            populateInfoWindow(this, infoWindows);
+            populateInfoWindow(marker, infoWindows);
         });
     }
 
@@ -243,6 +243,7 @@ function initMap() {
             map.setCenter(center);
         });
     }
+
 }
 
 //Shows error message when google maps does not show.
