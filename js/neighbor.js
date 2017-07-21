@@ -1,82 +1,16 @@
-//Array of all locations
-var locations = [{
-        title: 'Empire State College',
-        location: {
-            lat: 40.8075,
-            lng: -73.9626
-        }
-    },
-    {
-        title: 'New York University',
-        location: {
-            lat: 40.7287132,
-            lng: -73.9959727
-        }
-    },
-    {
-        title: 'Pace University',
-        location: {
-            lat: 40.7114914,
-            lng: -74.0051396
-        }
-    },
-    {
-        title: 'City University of New York',
-        location: {
-            lat: 40.8200,
-            lng: -73.9493
-        }
-    },
-    {
-        title: 'New York Law School',
-        location: {
-            lat: 40.7180,
-            lng: -74.0070
-        }
-    },
-    {
-        title: 'Baruch College',
-        location: {
-            lat: 40.7402778,
-            lng: -73.9844444
-        }
-    },
-    {
-        title: 'Cooper Union',
-        location: {
-            lat: 40.7281,
-            lng: -73.9916
-        }
-    },
-    {
-        title: 'Marymount Manhattan College',
-        location: {
-            lat: 40.7687,
-            lng: -73.9597
-        }
-    },
-    {
-        title: 'Berkeley College',
-        location: {
-            lat: 40.7539,
-            lng: -73.9796
-        }
-    }
-];
-
-
-
-
 //Animates the marker when the item from list or the marker is clicked
 function toggleBounce(marker) {
-    if (marker.getAnimation() !== null) {
+    if ((marker.getAnimation() !== null)) {
         marker.setAnimation(null);
     } else {
         marker.setAnimation(google.maps.Animation.BOUNCE);
     }
+
+    //Stop animation    
+    setTimeout(function() {
+        marker.setAnimation(null);
+    }, 2100);
 }
-
-
 
 var markers = [];
 var map;
@@ -211,18 +145,17 @@ function initMap() {
             var wikiUrl = 'http://en.wikipedia.org/w/api.php?action=opensearch&search=' + marker.title + '&prop=image&iiprop=url&format=json&callback=wikiCallback';
             $.ajax({
                 url: wikiUrl,
+                // data: "neighbor.json",
                 dataType: "jsonp",
                 success: function(response) {
                     var articleList = response;
                     infowindow.setContent('<div class="infoWin">' + '<strong>' + marker.title + '</strong>' + '<br>' + articleList[2][0] + '  ' + '<i>' + "(Wikipedia)" + '</i>' + '</div>');
                     infowindow.open(map, marker);
-                    clearTimeout(wikiTimeOut);
                 }
-            });
-            //Displays error message if wikipedia doesn't work
-            var wikiTimeOut = setTimeout(function() {
+            }).fail(function(jqXHR, textStatus) {
                 alert("Wikipedia Loading Error");
-            }, 3000);
+            });
+
         }
         toggleBounce(marker);
     }
@@ -243,24 +176,14 @@ function initMap() {
             map.setCenter(center);
         });
     }
-
 }
 
-//Shows error message when google maps does not show.
-function maptimeout() {
-    var maptimeout = setTimeout(function() {
-        $('#error').append('Failed to Load Google Map :(');
-    }, 3000);
-}
-
-var Locs = function(data) {
-    this.title = ko.observable(data.title);
-    this.marker = ko.observable(data.marker);
-    this.location = ko.observable(data.location);
+// //Shows error message when google maps does not show.
+var mapTimeOut = function() {
+    alert("Failed to Load Google Map :(");
 };
 
 var ViewModel = function() {
-
     var self = this;
     self.filter = ko.observable("");
     self.locList = ko.observableArray(locations);
@@ -293,7 +216,6 @@ var ViewModel = function() {
             });
         }
     });
-
 };
 
 ko.applyBindings(new ViewModel());
